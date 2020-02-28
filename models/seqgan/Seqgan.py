@@ -308,8 +308,8 @@ class Seqgan(Gan):
 
         self.sess.run(tf.global_variables_initializer())
 
-        self.pre_epoch_num = 80
-        self.adversarial_epoch_num = 100
+        self.pre_epoch_num = 20
+        self.adversarial_epoch_num = 30
         self.log = open('experiment-log-seqgan-real.csv', 'w')
         generate_samples(self.sess, self.generator, self.batch_size, self.generate_num, self.generator_file)
         self.gen_data_loader.create_batches(self.oracle_file)
@@ -358,5 +358,3 @@ class Seqgan(Gan):
             self.reward.update_params()
             for _ in range(15):
                 self.train_discriminator()
-
-
